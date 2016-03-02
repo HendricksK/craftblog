@@ -19,13 +19,12 @@
 	
 	{% set posts = craft.entries.find() %}
 
-	{% set categories = craft.categories.relatedTo(posts) %}
-
-	{% for category in categories %}
-		{% for entry in craft.entries.relatedTo(category).find() %}
-		{{ category.title }}
+	{% set tags = craft.tags.relatedTo(posts) %}
+		
+	{% for tag in tags %}
+		{% for entry in craft.entries.relatedTo(tag).find() %}
+		{{ tag.title }}
 			<a href="{{ entry.url }}">{{ entry.title }}</a>
-			{% set assets = entry.headerImage %} 	
 		{% endfor %}
 	{% endfor%}
 

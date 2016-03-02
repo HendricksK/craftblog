@@ -9,67 +9,52 @@
  # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
  #}
 
+{% set nav = {
+	news: { title: "News", desc: "Recent News" },
+	vehicles: { title: "Vehicle", desc: "Vehicles section of the site" },
+	music: { title: "Music", desc: "Music section of the site" },
+} %}
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
 <head>
 	<meta charset="utf-8" />
 	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
 	<link rel="home" href="{{ siteUrl }}" />
-	<link rel="stylesheet" type="text/css" href="{{ baseUrl }}/public/assets/css/foundation.min.css">
-	<link rel="stylesheet" type="text/css" href="{{ baseUrl }}/public/assets/css/app.css">
-	<style type="text/css">
-		body { margin: 50px; font-family: sans-serif; background: #fff; }
-		#container { margin: 0 auto; width: 700px;
-			-webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-			        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-		}
-
-		#header, #footer { display: block; color: #fff; background: #da5a47; }
-		#header a, #footer a { color: #fff; }
-		#header { border-radius: 7px 7px 0 0; padding: 25px; }
-		#header:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
-		#header a { text-decoration: none; }
-		#header h1 { float: left; margin: 0; font-weight: normal; font-size: 30px; line-height: 1; }
-		#header nav { display: block; float: right; }
-		#header nav ul { margin: 0; list-style-type: none; }
-		#header nav ul li { float: left; margin-left: 20px; }
-		#header nav ul li a { display: block; margin-top: 4px; line-height: 22px; }
-		#header nav ul li a:hover,
-		#header nav ul li a.active { border-bottom: 2px solid #fff; }
-		#header nav ul li a.active { cursor: default; }
-
-		#content { display: block; padding: 25px; background: #fff; }
-		#content h1 { margin-top: 0; font-size: 35px; font-weight: bold; }
-		#content a { color: #da5a47; text-decoration: none; }
-		#content a:hover { text-decoration: underline; }
-
-		#footer { border-radius: 0 0 7px 7px; padding: 15px; font-size: 12px; text-align: center; }
-	</style>
+	<link rel="stylesheet" type="text/css" href="{{ siteUrl }}/assets/css/foundation.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ siteUrl }}/assets/css/app.css">
+	<link rel="stylesheet" type="text/css" href="{{ siteUrl }}/assets/css/customsite.css">
 </head>
 
 <body>
-	<div id="container">
-		<header id="header">
-			<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
-
-			<nav>
-				<ul>
-					<li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>News</a></li>
-					<li><a href="{{ url('vehicles') }}" {% if craft.request.firstSegment == 'vehicles' %}class="active"{% endif %}>Vehicles</a></li>
-				</ul>
-			</nav>
-		</header>
-
-		<main id="content" role="main">
+	<div class="top-bar row">
+	{% set entries = craft.entries.find() %}		
+		<ul id="nav" class="menu">
+			<li><a href="/"><img src="{{ logo.imageUrl }}" style="height: 80px "></a></li>
+		    {% for slug, item in nav %}
+				<li>
+				<a href="{{ url(slug) }}" {% if craft.request.firstSegment == slug %}class="button"{% endif %}>
+					<strong>{{ item.title }}</strong>
+				</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div id="container" class="row">
+		<main id="content" role="main" >
 			{% block content %}
-				<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
-				<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+				
 			{% endblock %}
 		</main>
-
-		<footer id="footer">
-			Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved  •  Built with <a href="http://craftcms.com">Craft</a>
-		</footer>
 	</div>
+	<footer id="footer" class="footer">
+				<div class="small-12 colums">
+				<p class="copyright">Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved  •  Built with <a href="http://craftcms.com">Craft</a></p>
+				</div>
+			<script type="text/javascript" src="{{ siteUrl }}/assets/js/vendor/jquery.min.js"></script>
+			<script type="text/javascript" src="{{ siteUrl }}/assets/js/vendor/what-input.min.js"></script>
+			<script type="text/javascript" src="{{ siteUrl }}/assets/js/foundation.min.js"></script>
+			<script type="text/javascript" src="{{ siteUrl }}/assets/js/app.js"></script>
+	</footer>
 </body>
 </html>

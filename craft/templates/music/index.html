@@ -22,7 +22,7 @@
 			<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
 			{% set assets = entry.headerImage %}
 			{% for asset in assets %}
-        		<img src="{{ asset.url }}" style="max-width:600px">
+        		<img src="{{ asset.url }}">
     		{% endfor %}
 			<p><a href="{{ entry.url }}">Continue reading</a></p>
 			<p>{% set categories = craft.categories %}
