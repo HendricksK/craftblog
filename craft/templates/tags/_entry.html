@@ -14,15 +14,9 @@
  #}
 
 {% extends "_layout" %}
-
+{% set entrySlug = craft.request.lastSegment %}
 {% block content %}
 	<article>
-		<h1>{{ entry.title }}</h1>
-		<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
-		{% set assets = entry.headerImage %}
-			{% for asset in assets %}
-        		<img src="{{ asset.url }}" style="max-width:600px">
-    	{% endfor %}
-		{{ entry.body }}
+		{% set tags = craft.tags.relatedTo(entrySlug) %}
 	</article>
 {% endblock %}
