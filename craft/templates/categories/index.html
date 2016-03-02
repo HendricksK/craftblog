@@ -14,20 +14,20 @@
 {% set title = "Cateogry Posts" %}
 
 {% block content %}
+
 	<h1>Categories</h1>
 
-	{% set posts = craft.entries.find() %}
-
-		{% set categories = craft.categories.relatedTo(posts) %}
-		{% for category in categories %}
-			<p>{{ category.title }}</p>
-			{% for entry in craft.entries.relatedTo(category).find() %}	
-				<a href="{{ entry.url }}">{{ entry.title }}</a>
-				{% set assets = entry.headerImage %}
-					{% for asset in assets %}
-	        		<img src="{{ asset.url }}" style="max-width:600px">
-	    		{% endfor %}
-			{% endfor %}
-		{% endfor%}
+	{% set categories = craft.categories.relatedTo(posts) %}
+		
+	{% for category in categories %}
+		<p>{{ category.title }}</p>
+		{% for entry in craft.entries.relatedTo(category).find() %}
+			<a href="{{ entry.url }}">{{ entry.title }}</a>
+			{% set assets = entry.headerImage %}
+				{% for asset in assets %}
+		        	<img src="{{ asset.url }}" style="max-width:600px">
+		    	{% endfor %}
+		{% endfor %}
+	{% endfor%}
 
 {% endblock %}

@@ -5,3 +5,5 @@ https://straightupcraft.com/articles/how-do-i-only-display-a-list-of-categories-
 http://craftcms.stackexchange.com/questions/1345/check-to-see-if-category-is-populated
 
 https://straightupcraft.com/
+
+http://twig.sensiolabs.org/doc/coding_standards.html
