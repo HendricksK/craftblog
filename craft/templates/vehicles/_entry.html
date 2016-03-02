@@ -19,6 +19,8 @@
 	<article>
 	<h1>{{ entry.title }}</h1>
 	<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
+	
+
 
 	<div class="row small-12 columns">
 		<h4>Tags</h4>
@@ -42,11 +44,11 @@
 	</div>
 
 	<div class="row small-12 colums">
-		{% set assets = entry.image %}
 		{% set first = entry.image.first() %}
-			<img src="{{ first.url }}" class="small-12 columns no-padding">
-        	<img src="{{ attribute(assets, 1).url }}" class="small-6 colums left">
-        	<img src="{{ attribute(assets, 2).url }}" class="small-6 colums left">
+		<img src="{{ first.url }}" class="small-12 columns no-padding">
+		{% set assets = entry.image %}
+        <img src="{{ attribute(assets, 1).url }}" class="small-6 colums left">
+        <img src="{{ attribute(assets, 2).url }}" class="small-6 colums left">
 	</div>
 
 	</article>
