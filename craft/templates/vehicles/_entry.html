@@ -17,16 +17,37 @@
 
 {% block content %}
 	<article>
-		<h1>{{ entry.title }}</h1>
-		<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
-		{% set tags = craft.tags %}
+	<h1>{{ entry.title }}</h1>
+	<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
+
+	<div class="row small-12 columns">
+		<h4>Tags</h4>
+		{% set tags = craft.tags.relatedTo(entry) %}
 		{% for tag in tags %}
 			{{ tag.name }}
 		{% endfor %}
+	</div>	
+	
+	<div class="row small-12 columns">	
 		{% set assets = entry.headerImage %}
 			{% for asset in assets %}
-        		<img src="{{ asset.url }}">
+        		<img src="{{ asset.url }}" class="small-12 columns no-padding">
     	{% endfor %}
+    </div>
+
+	<hr>
+
+	<div class="row small-12 columns">
 		{{ entry.body }}
+	</div>
+
+	<div class="row small-12 colums">
+		{% set assets = entry.image %}
+		{% set first = entry.image.first() %}
+			<img src="{{ first.url }}" class="small-12 columns no-padding">
+        	<img src="{{ attribute(assets, 1).url }}" class="small-6 colums left">
+        	<img src="{{ attribute(assets, 2).url }}" class="small-6 colums left">
+	</div>
+
 	</article>
 {% endblock %}
