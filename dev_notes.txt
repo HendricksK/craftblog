@@ -1,0 +1,7 @@
+http://craftcms.stackexchange.com/questions/298/display-entries-that-belong-to-a-category
+
+https://straightupcraft.com/articles/how-do-i-only-display-a-list-of-categories-that-have-entries-and-hide-empty-categories
+
+http://craftcms.stackexchange.com/questions/1345/check-to-see-if-category-is-populated
+
+https://straightupcraft.com/
