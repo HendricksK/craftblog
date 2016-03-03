@@ -1,0 +1,47 @@
+{#
+ # News entry template
+ # -------------------
+ #
+ # This template gets loaded whenever a News entry’s URL is
+ # requested. That’s because the vehicles section’s Template setting is
+ # set to “news/_entry”, the path to this template.
+ #
+ # When this template is loaded, it will already have an ‘entry’
+ # variable, set to the requested News entry.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+{% block head %}
+	{{ parent() }}
+	<style type="text/css">
+		.small-3.columns {
+			float:left !important;
+		}
+	</style>
+{% endblock %}
+{% block content %}
+
+{% for articleBlock in entry.neo.type('heading') %}
+	<h2> {{ articleBlock.heading }} </h2>
+	<h4> {{ articleBlock.subHeading }} </h4>
+{% endfor %}
+
+{% for bodyBlock in entry.neo.type('body') %}
+	{{ bodyBlock.paragraph }}
+{% endfor %}
+
+<div class="small-12 columns gallery">
+{% for bonusImage in entry.neo.type('bonusImages') %}
+	{% set assets = bonusImage.image %}
+	{% for asset in assets %}
+		<div class="small-3 columns">
+        	<img src="{{ asset.url }}">
+        </div>
+    {% endfor %}
+{% endfor %}
+</div>	
+
+{% endblock %}

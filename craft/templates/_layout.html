@@ -17,6 +17,7 @@
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+{% block head %}
 <head>
 	<meta charset="utf-8" />
 	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
@@ -25,7 +26,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ siteUrl }}/assets/css/app.css">
 	<link rel="stylesheet" type="text/css" href="{{ siteUrl }}/assets/css/customsite.css">
 </head>
-
+{% endblock %}
 <body>
 	<div class="top-bar row">
 	{% set entries = craft.entries.find() %}		
