@@ -16,13 +16,14 @@
 {% extends "_layout" %}
 
 {% block content %}
-	<article>
-		<h1>{{ entry.title }}</h1>
-		<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
-		{% set assets = entry.headerImage %}
-			{% for asset in assets %}
-        		<img src="{{ asset.url }}" style="max-width:600px">
-    	{% endfor %}
-		{{ entry.body }}
-	</article>
+
+{% set category = craft.categories.slug(craft.request.getSegment(2)).first() %}	{# filtering the posts based on the category name, which i get from the url - segment 2 #}
+
+	<div class="row small-12 columns">
+		<h4>All posts related to the specified {{ category }} category </h4>
+		{% set entries = craft.entries.relatedTo(category).find() %}
+		{% for entry in entries %}
+			<a href="{{ entry.url }}">{{ entry.title }}</a> <br>
+		{% endfor %}
+	</div>
 {% endblock %}

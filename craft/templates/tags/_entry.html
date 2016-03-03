@@ -14,9 +14,16 @@
  #}
 
 {% extends "_layout" %}
-{% set entrySlug = craft.request.lastSegment %}
+
 {% block content %}
-	<article>
-		{% set tags = craft.tags.relatedTo(entrySlug) %}
-	</article>
+
+	{% set tag = craft.tags.title(craft.request.getSegment(2)).first() %}	{# filtering the posts based on the tag name, which i get from the url - segment 2 #}
+
+	<div class="row small-12 columns">
+		<h4>All posts related to the specified {{ tag }} tag </h4>
+		{% set entries = craft.entries.relatedTo(tag).find() %}
+		{% for entry in entries %}
+			<a href="{{ entry.url }}">{{ entry.title }}</a> <br>
+		{% endfor %}
+	</div>
 {% endblock %}

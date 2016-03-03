@@ -23,9 +23,14 @@
 
 	{% for category in categories %}
 		{% for entry in craft.entries.relatedTo(category).find() %}
-		{{ category.title }}
-			<a href="{{ entry.url }}">{{ entry.title }}</a>
-			{% set assets = entry.headerImage %} 	
+		<div class="callout">
+			<h4>Category: <a href="/categories/{{ category.title }}">{{ category.title }}</a></h4>
+			<h2>Article: <a href="{{ entry.url }}">{{ entry.title }}</a></h2>
+			{% set assets = entry.headerImage %}
+				{% for asset in assets %}
+        		<img src="{{ asset.url }}">
+    		{% endfor %}
+		</div>	
 		{% endfor %}
 	{% endfor%}
 
