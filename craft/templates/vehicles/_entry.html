@@ -42,7 +42,8 @@
 	<div class="row small-12 columns">
 		{{ entry.body }}
 	</div>
-
+{# using twigs conditional queries to check whether content exists, if so display the intended content in this way, if not move on and complete loading the rest of the page is essentially what is happening. #}
+	{% if entry.image is not empty %}
 	<div class="row small-12 colums">
 		{% set first = entry.image.first() %}
 		<img src="{{ first.url }}" class="small-12 columns no-padding">
@@ -50,6 +51,7 @@
         <img src="{{ attribute(assets, 1).url }}" class="small-6 colums left">
         <img src="{{ attribute(assets, 2).url }}" class="small-6 colums left">
 	</div>
+	{% endif %}
 
 	</article>
 {% endblock %}
