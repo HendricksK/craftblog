@@ -1,5 +1,21 @@
 @charset "UTF-8";
 
+.has-form {
+  width: 50%;
+}
+
+.has-form .button {
+  float:left;
+  margin-left: 40%;
+  width: 85% !important;
+}
+
+.has-form .search {
+  width:85%;
+  float:left;
+  margin-left: 40%;
+}
+
 .left {float:left;}
 .no-padding {padding:0;}
 
@@ -22,24 +38,28 @@
   background-color: #292c2f;
   text-align: center;
   font-size: 1.2rem;
-  padding: 4rem; }
-  .footer p.slogan {
-    color: #8d9093;
-    font-size: 1.8rem;
-    margin: 0 0 1rem; }
-  .footer p.copywrite {
-    color: #8f9296;
-    font-size: 0.875rem;
-    margin: 0; }
-  .footer .links a {
-    list-style: none;
-    font-weight: bold;
-    color: #ffffff;
-    padding: 3rem 0 2rem;
-    margin: 0; }
-    .footer .links a::after {
-      content: "•";
-      padding: 0 0.4rem 0 0.8rem; }
-    .footer .links a:last-child::after {
-      content: "";
-      padding: 0 0.4rem 0 0.8rem; }
+  padding: 4rem; 
+  
+  bottom: 0;
+  width: 100%;
+  }
+.footer p.slogan {
+  color: #8d9093;
+  font-size: 1.8rem;
+  margin: 0 0 1rem; }
+.footer p.copywrite {
+  color: #8f9296;
+  font-size: 0.875rem;
+  margin: 0; }
+.footer .links a {
+  list-style: none;
+  font-weight: bold;
+  color: #ffffff;
+  padding: 3rem 0 2rem;
+  margin: 0; }
+.footer .links a::after {
+  content: "•";
+  padding: 0 0.4rem 0 0.8rem; }
+.footer .links a:last-child::after {
+  content: "";
+  padding: 0 0.4rem 0 0.8rem; }

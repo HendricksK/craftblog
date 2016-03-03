@@ -1,0 +1,21 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+{% set query = craft.request.getParam('q') %}
+{% set entries = craft.entries.search(query).order('score') %}
+
+{% if entries|length %}
+    <h4>{{ entries|length }} results:</h4>
+    <ul>
+        {% for entry in entries %}
+        <div class="callout">
+            <a href="{{ entry.url }}">{{ entry.title }}</a>
+        </div>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h4>Your search for “{{ query }}” didn’t return any results.</h4>
+{% endif %}
+
+{% endblock %}
