@@ -11,11 +11,11 @@
  #}
 
 {% extends "_layout" %}
-{% set title = "Cateogry Posts" %}
+{% set title = "Tagged Posts" %}
 
 {% block content %}
 
-	<h1>Categories</h1>
+	<h1>Tagged Posts</h1>
 	
 	{% set posts = craft.entries.find() %}
 
@@ -23,8 +23,14 @@
 		
 	{% for tag in tags %}
 		{% for entry in craft.entries.relatedTo(tag).find() %}
-		{{ tag.title }}
-			<a href="{{ entry.url }}">{{ entry.title }}</a>
+		<div class="callout">
+		<h4>Tag: <a href="/tags/{{ tag.title }}"></a>{{ tag.title }}</h4>
+		<h2>Article: <a href="{{ entry.url }} ">{{ entry.title }}</a></h2>
+		{% set assets = entry.headerImage %}
+				{% for asset in assets %}
+        		<img src="{{ asset.url }}">
+    		{% endfor %}
+		</div>	
 		{% endfor %}
 	{% endfor%}
 

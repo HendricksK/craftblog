@@ -20,13 +20,11 @@
 	<h1>{{ entry.title }}</h1>
 	<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
 	
-
-
 	<div class="row small-12 columns">
 		<h4>Tags</h4>
 		{% set tags = craft.tags.relatedTo(entry) %}
 		{% for tag in tags %}
-			{{ tag.name }}
+			<a href="/tags/{{ tag.name }}">{{ tag.name }}</a>
 		{% endfor %}
 	</div>	
 	

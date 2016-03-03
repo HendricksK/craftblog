@@ -1,0 +1,35 @@
+{% extends "/base_gallery.html" %}
+
+{% block head %}
+	{{ parent() }}
+	<style type="text/css">
+		#container {
+			background-color: #000;
+			padding: 0;
+		}
+		.colums {
+			float:left;
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+	{% for entry in craft.entries.section('vehicles').find() %}
+		{% set assets = entry.headerImage %}
+		{% for asset in assets %}
+			<div class="small-6 colums">	
+		        <a href="{{ entry.url }}"><img src="{{ asset.url }}"></a>
+		    </div>
+	    {% endfor %}
+
+		{% if entry.image is not empty %}	
+		{% set image = entry.image %}
+			{% for img in entry.image %}
+			<div class="small-6 colums">	
+				<a href="{{ entry.url }}"><img src="{{ img.url }}"></a>
+			</div>
+			{% endfor %}
+		{% endif %}
+		
+	{% endfor %}	
+{% endblock %}
