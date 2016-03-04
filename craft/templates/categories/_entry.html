@@ -14,9 +14,13 @@
  #}
 
 {% extends "_layout" %}
-
+{% block pagination %}
+	{% set segment = craft.request.getSegments %}
+		{% for url in segment %}
+			{{ url }}
+		{% endfor %}
+{% endblock %}
 {% block content %}
-
 {% set category = craft.categories.slug(craft.request.getSegment(2)).first() %}	{# filtering the posts based on the category name, which i get from the url - segment 2 #}
 
 	<div class="row small-12 columns">

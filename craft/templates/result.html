@@ -1,5 +1,10 @@
 {% extends "_layout" %}
-
+{% block pagination %}
+	{% set segment = craft.request.getSegments %}
+		{% for url in segment %}
+			{{ url }}
+		{% endfor %}
+{% endblock %}
 {% block content %}
 
 {% set query = craft.request.getParam('q') %}

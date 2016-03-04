@@ -12,7 +12,12 @@
 
 {% extends "_layout" %}
 {% set title = "Cateogry Posts" %}
-
+{% block pagination %}
+	{% set segment = craft.request.getSegments %}
+		{% for url in segment %}
+			{{ url }}
+		{% endfor %}
+{% endblock %}
 {% block content %}
 
 	<h1>Categories</h1>
@@ -23,6 +28,7 @@
 
 	{% for category in categories %}
 		{% for entry in craft.entries.relatedTo(category).find() %}
+		{% if category.title != "Categories" %}
 		<div class="callout">
 			<h4>Category: <a href="/categories/{{ category.title }}">{{ category.title }}</a></h4>
 			<h2>Article: <a href="{{ entry.url }}">{{ entry.title }}</a></h2>
@@ -30,7 +36,8 @@
 				{% for asset in assets %}
         		<img src="{{ asset.url }}">
     		{% endfor %}
-		</div>	
+		</div>
+		{% endif %}	
 		{% endfor %}
 	{% endfor%}
 

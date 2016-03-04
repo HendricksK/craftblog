@@ -48,10 +48,9 @@
 		</ul>
 	</div>
 	<div id="container" class="row">
+		{% block pagination %}{% endblock %}
 		<main id="content" role="main" >
-			{% block content %}
-				
-			{% endblock %}
+			{% block content %}{% endblock %}
 		</main>
 	</div>
 	<footer id="footer" class="footer">

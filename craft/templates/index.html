@@ -18,7 +18,12 @@
  #}
 
 {% extends "_layout" %}
-
+{% block pagination %}
+	{% set segment = craft.request.getSegments %}
+		{% for url in segment %}
+			{{ url }}
+		{% endfor %}
+{% endblock %}
 {% block content %}
 	<h1>{{ entry.title }}</h1>
 	<h2>Recent Posts</h2>

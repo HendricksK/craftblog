@@ -12,7 +12,12 @@
 
 {% extends "_layout" %}
 {% set title = "Vehicles" %}
-
+{% block pagination %}
+	{% set segment = craft.request.getSegments %}
+		{% for url in segment %}
+			{{ url }}
+		{% endfor %}
+{% endblock %}
 {% block content %}
 	<h1>Music</h1>
 
