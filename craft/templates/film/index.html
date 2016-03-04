@@ -11,12 +11,12 @@
  #}
 
 {% extends "_layout" %}
-{% set title = "Vehicle Reviews" %}
+{% set title = "Film Reviews" %}
 
 {% block content %}
-	<h1>Vehicles</h1>
+	<h1>Film</h1>
 
-	{% for entry in craft.entries.section('vehiclereviews').find() %}
+	{% for entry in craft.entries.section('film').find() %}
 		<article>
 			<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
 			<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>

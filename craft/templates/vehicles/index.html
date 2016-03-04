@@ -32,4 +32,16 @@
 			<p><a href="{{ entry.url }}">Continue reading</a></p>
 		</article>
 	{% endfor %}
+
+	{% for entry in craft.entries.section('vehiclereviews').find() %}
+		<article>
+			<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
+			<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
+			{% set assets = entry.headerImage %}
+				{% for asset in assets %}
+        		<img src="{{ asset.url }}">
+    		{% endfor %}
+			<p><a href="{{ entry.url }}">Continue reading</a></p>
+		</article>
+	{% endfor %}
 {% endblock %}

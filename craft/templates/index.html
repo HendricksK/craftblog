@@ -28,7 +28,7 @@
 	<h1>{{ entry.title }}</h1>
 	<h2>Recent Posts</h2>
 	<ul>
-		{% for entry in craft.entries.limit(5).find() %}
+		{% for entry in craft.entries.find() %}
 			<a href="{{ entry.url }}"><h1>{{ entry.title }}<h1>
 			{% set assets = entry.headerImage %}
 				{% for asset in assets %}

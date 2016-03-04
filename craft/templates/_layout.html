@@ -13,6 +13,7 @@
 	news: { title: "News", desc: "Recent News" },
 	vehicles: { title: "Vehicle", desc: "Vehicles section of the site" },
 	music: { title: "Music", desc: "Music section of the site" },
+	film: {title: "Film", desc: "Film section of the site"},
 } %}
 
 <!DOCTYPE html>
@@ -28,10 +29,10 @@
 </head>
 {% endblock %}
 <body>
-	<div class="top-bar row">
+	<div class="top-bar small-12">
+	<a href="/" class="small-12 large-2 columns"><img src="{{ logo.imageUrl }}" style="height: 80px" ></a>
 	{% set entries = craft.entries.find() %}		
-		<ul id="nav" class="menu">
-			<li><a href="/"><img src="{{ logo.imageUrl }}" style="height: 80px "></a></li>
+		<ul id="nav" class="menu small-12 large-6 columns">
 		    {% for slug, item in nav %}
 				<li>
 				<a href="{{ url(slug) }}" {% if craft.request.firstSegment == slug %}class="button"{% endif %}>
@@ -39,18 +40,22 @@
 				</a>
 				</li>
 			{% endfor %}
-			<li class="has-form">
-			  	<form action="{{ url('search/results') }}">
-				    <input type="search" name="q" placeholder="Search" class="search">
-				    <input type="submit" value="Go" class="button">
-				</form>
-			</li>
 		</ul>
+		<div class="small-12 large-2 columns">
+			<form action="{{ url('search/results') }}">
+				<input type="search" name="q" placeholder="Search" class="search small-2 columns">
+				<input type="submit" value="Go" class="button">
+			</form>
+		</div>
 	</div>
 	<div id="container" class="row">
 		{% block pagination %}{% endblock %}
 		<main id="content" role="main" >
 			{% block content %}{% endblock %}
+				{% if entry.author %}
+					<h5>Written by {{ entry.author }}</h5>
+					<a href="/"><img src="{{ admin.imageUrl }}" style="height: 80px "></a>
+				{% endif %}
 		</main>
 	</div>
 	<footer id="footer" class="footer">

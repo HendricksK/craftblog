@@ -1,19 +1,13 @@
 @charset "UTF-8";
-
-.has-form {
-  width: 50%;
+.top-bar input {
+  width: 100% !important;
 }
-
-.has-form .button {
-  float:left;
-  margin-left: 40%;
-  width: 85% !important;
+.menu {
+  padding-top: 20px; 
 }
-
-.has-form .search {
-  width:85%;
-  float:left;
-  margin-left: 40%;
+.menu li a{
+  width: 80px;
+  text-align: center;
 }
 
 .left {float:left;}
@@ -39,7 +33,6 @@
   text-align: center;
   font-size: 1.2rem;
   padding: 4rem; 
-  
   bottom: 0;
   width: 100%;
   }
