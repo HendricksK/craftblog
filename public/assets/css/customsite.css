@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 .top-bar input {
   width: 100% !important;
 }
@@ -12,20 +13,6 @@
 
 .left {float:left;}
 .no-padding {padding:0;}
-
-.hero {
-  background: url("http://static.pexels.com/wp-content/uploads/2014/07/beach-coast-holiday-2190-825x550.jpg") no-repeat center center;
-  background-size: cover;
-  height: 50vh;
-  overflow: hidden; }
-  .hero h1 {
-    color: #fff;
-    text-align: center;
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%); }
 
 .footer {
   margin-top: 20px;

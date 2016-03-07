@@ -25,16 +25,18 @@
 		<article>
 			<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
 			<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
+			{% set categories = craft.categories %}
+				{% for category in categories %}
+				{% if category.title != "Categories" %}
+					<a href="{{ baseUrl }}/categories/{{ category.title }}">{{ category.title }}</a>
+				{% endif %}
+			{% endfor%}
 			{% set assets = entry.headerImage %}
 			{% for asset in assets %}
         		<img src="{{ asset.url }}">
     		{% endfor %}
-			<p><a href="{{ entry.url }}">Continue reading</a></p>
-			<p>{% set categories = craft.categories %}
-				{% for category in categories %}
-					{{ category.title }}
-				{% endfor%}
-			</p>
+			<a href="{{ entry.url }}">Continue reading</a>
+			
 		</article>
 	{% endfor %}
 {% endblock %}

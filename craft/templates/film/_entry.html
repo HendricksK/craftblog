@@ -23,7 +23,7 @@
 		.callout {
 			float:left;
 		}
-		.scores .callout p{
+		.scores .callout h4{
 			padding-top: 5px;
 		}
 	</style>
@@ -48,7 +48,7 @@
 				<a href="{{ score.url }}">
 				<div class="callout small-12">
 					<img src="{{ image.url }}" style="height: 100px">
-					<p>{{ score }}</p>
+					<h4>{{ score }}</h4>
 				</div>
 				</a>
 			{% endfor %}

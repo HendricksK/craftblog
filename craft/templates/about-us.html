@@ -1,0 +1,20 @@
+{% extends "_layout" %}
+
+{% block content %}
+	{% for entry in craft.entries.section('aboutus').find() %}
+		<h1>{{ entry.title }}</h1>
+		<div class="callout">
+		{% for asset in entry.headerImage %}
+			<img src="{{ asset.url }}">
+		{% endfor %}
+		<hr>
+			{{ entry.body }}
+		</div>
+		<div class="callout">
+		<h4>Meet the team</h4>
+		{% for asset in entry.image %}
+			<img src="{{ asset.url }}">
+		{% endfor %}
+		</div>
+	{% endfor %}
+{% endblock %}
